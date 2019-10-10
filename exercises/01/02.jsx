@@ -2,13 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import { getClassNameVariants } from 'scenes/components/Header/SummaryBlock/utils';
+import { getClassNameVariants } from 'scenes/components/Header/SummaryBlock/utils';
 
-// import StatusContainer from 'scenes/components/Header/SummaryBlock/StatusContainer';
-// import StatusLabel from 'scenes/components/Header/SummaryBlock/StatusLabel';
-// import StatusIcon from 'scenes/components/Header/SummaryBlock/StatusIcon';
-// import Wrapper from 'scenes/components/Header/SummaryBlock/Wrapper';
-// import Stat from 'scenes/components/Header/SummaryBlock/Stat';
+import StatusContainer from 'scenes/components/Header/SummaryBlock/StatusContainer';
+import StatusLabel from 'scenes/components/Header/SummaryBlock/StatusLabel';
+import StatusIcon from 'scenes/components/Header/SummaryBlock/StatusIcon';
+import Wrapper from 'scenes/components/Header/SummaryBlock/Wrapper';
+import Stat from 'scenes/components/Header/SummaryBlock/Stat';
 
 
 // Exercise 01/02
@@ -42,7 +42,9 @@ import PropTypes from 'prop-types';
 // ------
 // 🐨  The imported components should be sufficiently semantic in their naming
 //    that how they might be used to construct the desired layout seems logical.
-function StatusBlock(props) {
+
+
+function StatusBlock({ status, stat }) {
   // You will need to UNCOMMENT this function call.
   // This will return an object whose contents are 2 nodes:
   // 1) `color` -- class name for controlling the color
@@ -51,11 +53,21 @@ function StatusBlock(props) {
   // You should use these in your component to ensure the
   // correct icon and colour are displayed based on the
   // status passed into our component.
-  // const classNames = getClassNameVariants(props.status);
+  const classNames = getClassNameVariants(status);
 
   return (
     <div>
-      Start HERE!
+      <Wrapper colorClassName={classNames.color}>
+        <StatusContainer>
+          <div>
+            <StatusLabel label={status} />
+          </div>
+          <div>
+            <StatusIcon iconClassName={classNames.icon} />
+          </div>
+        </StatusContainer>
+        <Stat>{stat}</Stat>
+      </Wrapper>
     </div>
   );
 }

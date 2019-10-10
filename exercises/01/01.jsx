@@ -28,12 +28,37 @@ import React from 'react';
 //        Unavailable  =>    'fas fa-user-slash'
 //        Available    =>    'far fa-user'
 //        Busy         =>    'fas fa-user'
+
+const statusIcon = {
+  available: 'far fa-user',
+  unavailable: 'fas fa-user-slash',
+  busy: 'fas fa-user',
+};
+
+
 function StatusBlock(props) {
   return (
     <div>
-      Start HERE!
+      <div>
+        The status is:
+        {" "}
+        { props.status.charAt(0).toUpperCase() + props.status.slice(1) }
+      </div>
+      <div>
+        Statistic:
+        {" "}
+        { props.stat }
+      </div>
+      <div>
+        Icon:
+        {" "}
+        <i
+          className={statusIcon[props.status]}
+        />
+      </div>
     </div>
   );
 }
+
 
 export default StatusBlock;
